@@ -24,10 +24,6 @@ class _SplashScreensState extends State<SplashScreens> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(child:Container(
-//        height: 100.0,
-//        width: 100.0,
-//        color: Colors.grey,
-
             child: Image(
               image: AssetImage('assets/Screenshot_2020-03-31-09-08-22-11.jpg'),
             )),

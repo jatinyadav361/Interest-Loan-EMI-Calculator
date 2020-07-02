@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "577631894194",
+    "firebase_url": "https://interest-calculator-1f7fc.firebaseio.com",
+    "project_id": "interest-calculator-1f7fc",
+    "storage_bucket": "interest-calculator-1f7fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577631894194:android:34d338298672456a14a7ab",
+        "android_client_info": {
+          "package_name": "com.example.simple_interest_calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577631894194-1ltroeecqr5s3971r6m481rc0lor6ffc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVHD41dVEmvBIuSgZw6s07SlAGXVuwntA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577631894194-1ltroeecqr5s3971r6m481rc0lor6ffc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

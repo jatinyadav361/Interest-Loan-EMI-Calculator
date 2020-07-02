@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Help extends StatefulWidget {
   @override
@@ -6,8 +8,14 @@ class Help extends StatefulWidget {
 }
 
 class _HelpState extends State<Help> {
+
+  String url = 'https://drive.google.com/drive/folders/1WoxOSlgqbbqytgLeP8Q-Qj0lFd24lTK9?usp=sharing';
+
   @override
   Widget build(BuildContext context) {
+
+    var size = MediaQuery.of(context).size;
+
     return WillPopScope(
         onWillPop: () {
           moveToLastScreen();
@@ -37,23 +45,30 @@ class _HelpState extends State<Help> {
                   height: 10.0,
                 ),
                 Text(
-                  " 2. For more advanced details, please visit ",
+                  " 2. For more advanced details, please reinstall or update the app at: ",
                   textScaleFactor: 1.25,
                 ),
-                GestureDetector(
+                InkWell(
                   child: Text(
-                    "https://apps_jatin_yadav.ac.in",
+                    url,
                     textScaleFactor: 1.25,
                     style: TextStyle(
                         decoration: TextDecoration.underline,
                         color: Colors.blue),
                   ),
-                  onTap: () {
-                    debugPrint('pressed');
+                  onTap: () async{
+                   try {
+                     if(await canLaunch(url)) {
+                       await launch(url,universalLinksOnly: true, forceSafariVC: false);
+                     }
+                   } catch(e) {
+                     print('$e');
+                     Fluttertoast.showToast(msg: '$e');
+                   }
                   },
                 ),
                 SizedBox(
-                  height: 375,
+                  height: size.height*0.38,
                 ),
                 Center(
                     child: Text(
@@ -69,6 +84,7 @@ class _HelpState extends State<Help> {
               ])),
         ));
   }
+
 
   void moveToLastScreen() {
     Navigator.pop(context);

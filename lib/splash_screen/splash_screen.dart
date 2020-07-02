@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:simple_interest_calculator/screens/simple_interest.dart';
-import 'package:simple_interest_calculator/screens/splash_2.dart';
+import 'file:///C:/Users/jatin/AndroidStudioProjects/simple_interest_calculator/lib/splash_screen/splash_2.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

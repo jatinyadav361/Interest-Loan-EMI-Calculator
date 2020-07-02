@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_interest_calculator/intermediate/interEMI.dart';
 import 'package:simple_interest_calculator/models/emi.dart';
 import 'package:simple_interest_calculator/screens/compare_loan.dart';
 import 'package:simple_interest_calculator/screens/emi_calculator.dart';
@@ -9,24 +10,12 @@ class LoanEMI extends StatefulWidget {
 }
 
 class _LoanEMIState extends State<LoanEMI> {
-  EMIHistory emiHistory;
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-
-      onWillPop: (){
-        moveToLastScreen();
-      },
-        child: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text('Loan and EMI calculator'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            moveToLastScreen();
-          },
-        ),
       ),
       body: ListView(
         children: <Widget>[
@@ -55,14 +44,14 @@ class _LoanEMIState extends State<LoanEMI> {
               subtitle: Text('Click to calculate monthly EMI'),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return EMI(EMIHistory('','',''));
+                  return InterMediateEMIHistory();
                 }));
               },
             ),
           )
         ],
       ),
-    ));
+    );
   }
 
   void moveToLastScreen() {

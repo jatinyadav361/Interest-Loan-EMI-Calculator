@@ -1,7 +1,14 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
+import 'package:simple_interest_calculator/intermediate/interCompound.dart';
+import 'package:simple_interest_calculator/intermediate/interEMI.dart';
+import 'package:simple_interest_calculator/intermediate/interMonthly.dart';
+import 'package:simple_interest_calculator/intermediate/inter_simple.dart';
 import 'package:simple_interest_calculator/models/emi.dart';
+import 'package:simple_interest_calculator/models/userData.dart';
 import 'package:simple_interest_calculator/screens/compare_loan.dart';
 import 'package:simple_interest_calculator/screens/compound_interest.dart';
 import 'package:simple_interest_calculator/screens/emi_calculator.dart';
@@ -10,6 +17,7 @@ import 'package:simple_interest_calculator/screens/monthly_interest.dart';
 import 'package:simple_interest_calculator/screens/simple_interest.dart';
 import 'package:simple_interest_calculator/screens/help.dart';
 import 'package:simple_interest_calculator/screens/theme_dynamic.dart';
+import 'package:simple_interest_calculator/services/firestore.dart';
 
 
 class Home extends StatefulWidget {
@@ -71,7 +79,7 @@ class _HomeState extends State<Home> {
               title: Text('Compound Interest Calculator'),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CompoundInterest();
+                  return InterMediateCompoundHistory();
                 }));
               },
             ),
@@ -79,7 +87,7 @@ class _HomeState extends State<Home> {
               title: Text('Monthly Interest Calculator'),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MonthlyInterest();
+                  return InterMediateMonthlyHistory();
                 }));
               },
             ),
@@ -87,7 +95,7 @@ class _HomeState extends State<Home> {
               title: Text('Monthly EMI Calculator'),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return EMI(EMIHistory('','',''));
+                  return InterMediateEMIHistory();
                 }));
               },
             ),
@@ -105,10 +113,12 @@ class _HomeState extends State<Home> {
 
       ),
       appBar: AppBar(
-        title: Wrap(direction: Axis.vertical, children: <Widget>[
+        title: Wrap(direction: Axis.vertical,spacing: 2, children: <Widget>[
           Text(
             'Interest & Loan Calculator',
-            textScaleFactor: 0.98,
+            textScaleFactor: .97,
+            softWrap: true,
+            overflow: TextOverflow.fade,
           )
         ]),
         actions: <Widget>[
@@ -151,7 +161,7 @@ class _HomeState extends State<Home> {
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return SimpleInterest();
+                  return IntermediateSimpleInterest();
                 }));
               },
             ),
@@ -170,7 +180,7 @@ class _HomeState extends State<Home> {
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MonthlyInterest();
+                  return InterMediateMonthlyHistory();
                 }));
               },
             ),
@@ -193,7 +203,7 @@ class _HomeState extends State<Home> {
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CompoundInterest();
+                  return InterMediateCompoundHistory();
                 }));
               },
             ),
@@ -249,10 +259,13 @@ class _HomeState extends State<Home> {
             ? null
             : () {
           final RenderBox box = context.findRenderObject();
-          Share.share(text,
-              subject: subject,
+          Share.share('https://drive.google.com/drive/folders/1WoxOSlgqbbqytgLeP8Q-Qj0lFd24lTK9?usp=sharing',
+              subject: 'Interest and EMI Calculator App',
               sharePositionOrigin:
               box.localToGlobal(Offset.zero) & box.size);
+
+          Navigator.pop(context);
+
         },
       );
     if (choice == 'Rate this app')

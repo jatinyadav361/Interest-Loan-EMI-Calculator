@@ -36,19 +36,9 @@ class _LoanCompareState extends State<LoanCompare> {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.title;
-    return WillPopScope(
-      onWillPop: () {
-        moveToLastScreen();
-      },
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('Loan Comparison'),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              moveToLastScreen();
-            },
-          ),
         ),
         body: Form( key: _formKey,
               child:ListView(
@@ -378,7 +368,7 @@ class _LoanCompareState extends State<LoanCompare> {
           ],
         ),
       ),
-    ));
+    );
   }
 
   void moveToLastScreen() {
