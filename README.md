@@ -1,5 +1,7 @@
 # simple_interest_calculator
 
+Try this app : https://drive.google.com/drive/folders/1WoxOSlgqbbqytgLeP8Q-Qj0lFd24lTK9?usp=sharing
+
 A new Flutter application.
 
 ## Getting Started
